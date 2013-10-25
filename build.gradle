@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
@@ -67,4 +72,19 @@ subprojects {
     jar {
         manifest.attributes provider: 'gradle'
     }
+}
+
+task createJavaProject() << {
+	print "\n"
+	BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in));
+	print "Please input the project name : "
+	print "\n"
+        def projectName = inReader.readLine();
+	file(projectName).mkdir();
+	file(projectName + "/src/main/java/").mkdirs();
+	file(projectName + "/src/main/resources/").mkdirs();
+	file(projectName + "/src/test/java/").mkdirs();
+	file(projectName + "/src/test/resources/").mkdirs();
+	file(projectName + "/build.gradle").createNewFile();
+	print "create project [" + projectName + "] success";
 }
