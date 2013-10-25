@@ -1,2 +1,1 @@
-
-include "SqlUtility" ,"Spring"
+include "SqlUtility" ,"Spring"   , "Test" , "Jersey"

@@ -29,7 +29,11 @@ subprojects {
 		[group: "org.springframework", name: "spring-beans", version: "$spring_version"],
 		[group: "org.springframework", name: "spring-aop", version: "$spring_version"],
 		[group: "org.springframework", name: "spring-context", version: "$spring_version"],
+		[group: "org.springframework", name: "spring-tx", version: "$spring_version"],
+		[group: "org.springframework", name: "spring-web", version: "$spring_version"],
 		[group: "org.springframework", name: "spring-asm", version: "$spring_version"],
+		[group: "org.springframework", name: "spring-orm", version: "$spring_version"],
+		[group: "org.springframework", name: "spring-webmvc", version: "$spring_version"],
 		
 		// gson
 		[group: "com.google.code.gson", name: "gson", version: "$gson_version"],
@@ -86,5 +90,46 @@ task createJavaProject() << {
 	file(projectName + "/src/test/java/").mkdirs();
 	file(projectName + "/src/test/resources/").mkdirs();
 	file(projectName + "/build.gradle").createNewFile();
+	file("settings.gradle").text = (file("settings.gradle").text + " , \"" + projectName + "\"").replaceAll("\n","");
 	print "create project [" + projectName + "] success";
+}
+
+task createWebProject() << {
+	print "\n"
+	BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in));
+	print "Please input the project name : "
+	print "\n"
+        def projectName = inReader.readLine();
+	file(projectName).mkdir();
+	file(projectName + "/src/main/java/").mkdirs();
+	file(projectName + "/src/main/resources/").mkdirs();
+	file(projectName + "/src/main/webapp/WEB-INF/").mkdirs();
+	file(projectName + "/src/main/webapp/WEB-INF/web.xml").createNewFile();
+	// TODO default user the servlet 2.3
+	file(projectName + "/src/main/webapp/WEB-INF/web.xml").text="<!DOCTYPE web-app PUBLIC\n        \"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN\"\n        \"http://java.sun.com/dtd/web-app_2_3.dtd\" >\n\n<web-app>\n\n    <context-param>\n        <param-name>ServiceName</param-name>\n        <param-value>" + projectName + " SYSTEM</param-value>\n    </context-param>\n    <context-param>\n        <param-name>contextConfigLocation</param-name>\n        <param-value>/WEB-INF/applicationContext.xml;classpath:dataSource.xml</param-value>\n    </context-param>\n\n    <filter>\n        <filter-name>encodingFilter</filter-name>\n        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>\n        <init-param>\n            <param-name>encoding</param-name>\n            <param-value>UTF-8</param-value>\n        </init-param>\n    </filter>\n\n    <filter-mapping>\n        <filter-name>encodingFilter</filter-name>\n        <url-pattern>/*</url-pattern>\n    </filter-mapping>\n    <listener>\n        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>\n    </listener>\n\n    <servlet>\n        <servlet-name>DispatcherServlet</servlet-name>\n        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>\n        <init-param>\n            <param-name>contextConfigLocation</param-name>\n            <param-value>/WEB-INF/webApplicationContext.xml</param-value>\n        </init-param>\n        <load-on-startup>1</load-on-startup>\n    </servlet>\n    <servlet-mapping>\n        <servlet-name>DispatcherServlet</servlet-name>\n        <url-pattern>/*</url-pattern>\n    </servlet-mapping>\n</web-app>"
+
+	file(projectName + "/src/main/webapp/WEB-INF/applicationContext.xml").createNewFile();
+	file(projectName + "/src/main/webapp/WEB-INF/applicationContext.xml").text="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<beans xmlns=\"http://www.springframework.org/schema/beans\"\n       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n       xmlns:tx=\"http://www.springframework.org/schema/tx\"\n       xmlns:context=\"http://www.springframework.org/schema/context\"\n       xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd\n                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd\n                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd\">\n\n    <context:component-scan base-package=\"com.lufax.account\"/>\n    <context:annotation-config/>\n\n    <bean class=\"org.springframework.beans.factory.config.PropertyPlaceholderConfigurer\">\n        <property name=\"locations\">\n            <list>\n                <value>classpath:config.properties</value>\n            </list>\n        </property>\n    </bean>\n\n\n    <bean id=\"transactionManager\" class=\"org.springframework.jdbc.datasource.DataSourceTransactionManager\">\n        <property name=\"dataSource\" ref=\"dataSource\"/>\n    </bean>\n\n    <tx:annotation-driven transaction-manager=\"transactionManager\"/>\n</beans>"
+
+	file(projectName + "/src/main/webapp/WEB-INF/webApplicationContext.xml").createNewFile();
+	file(projectName + "/src/main/webapp/WEB-INF/webApplicationContext.xml").text = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<beans xmlns=\"http://www.springframework.org/schema/beans\"\n       xmlns:security=\"http://www.springframework.org/schema/security\"\n       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n       xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd\n          http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.3.xsd\">\n</beans>\n"
+
+	file(projectName + "/src/main/resources/config.properties").createNewFile();
+	file(projectName + "/src/main/resources/config.properties").text = "jdbc.url=jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=172.17.20.4)(PORT=1521))(connect_data=(sid=xe)))\njdbc.driver=oracle.jdbc.driver.OracleDriver\njdbc.username=accountr\njdbc.password=accountr";
+
+
+	file(projectName + "/src/main/resources/dataSource.xml").createNewFile();
+	file(projectName + "/src/main/resources/dataSource.xml").text = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<beans xmlns=\"http://www.springframework.org/schema/beans\"\n	xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n	xsi:schemaLocation=\"http://www.springframework.org/schema/beans\n       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd\">\n	<bean id=\"dataSource\"\n		class=\"org.springframework.jdbc.datasource.DriverManagerDataSource\">\n		<property name=\"driverClassName\" value=\"\${jdbc.driver}\" />\n		<property name=\"url\" value=\"\${jdbc.url}\" />\n		<property name=\"username\" value=\"\${jdbc.username}\" />\n		<property name=\"password\" value=\"\${jdbc.password}\" />\n	</bean>\n</beans>"
+
+	file(projectName + "/src/test/java/").mkdirs();
+	file(projectName + "/src/test/resources/").mkdirs();
+	file(projectName + "/build.gradle").createNewFile();
+	print "Please input the start port (xxxx): "
+	print "\n"
+        def httpPort = inReader.readLine();
+	file(projectName + "/build.gradle").text = "apply plugin: 'jetty' \nhttpPort = " + httpPort + "\nstopPort = 1" + httpPort;
+	
+
+	file("settings.gradle").text = (file("settings.gradle").text + " , \"" + projectName + "\"").replaceAll("\n","");
+	print "create WEB project [" + projectName + "] success";
 }
