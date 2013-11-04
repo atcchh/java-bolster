@@ -71,6 +71,7 @@ public class SQLGenerator {
                         " select  * from recharge_records where recharge_type = 'COMPENSATE' and recharge_status = 'SUCCESS' and rownum <=10 union all " + 
                         " select  * from recharge_records where recharge_type = 'AUTO' and recharge_status = 'PROCESSING'  and rownum <=10";
         sql = "select * from  cms_capital_statements where status = 'WAITING' and statement_Type = 'RECHARGE' and manual_Verified = 0 and rownum <= 10";
+        sql = "select * from compensation_batch";
         PreparedStatement pstat = conn.prepareStatement(sql);
         ResultSet rset = pstat.executeQuery();
         printClass(rset);

@@ -1,4 +1,4 @@
-package com.lufax.test.utils;
+package utility;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.ResourceLoaderAware;
 
-import com.lufax.test.TestWEBService1;
+import bean.lifecycle.TestWEBService1;
 
 public class MethodUtils {
     private Class[] clazzList = {BeanNameAware.class, BeanClassLoaderAware.class,BeanFactoryAware.class,ResourceLoaderAware.class,ApplicationEventPublisherAware.class,MessageSourceAware.class,ApplicationContextAware.class,BeanPostProcessor.class,InitializingBean.class};  

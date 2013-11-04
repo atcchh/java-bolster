@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 
-    <bean id="TestWEBService1" class="com.lufax.test.TestWEBService1"/>
-    <bean id="TestWEBService2" class="com.lufax.test.TestWEBService2"/>
+    <bean id="TestWEBService1" class="bean.lifecycle.TestWEBService1"/>
+    <bean id="TestWEBService2" class="bean.lifecycle.TestWEBService2"/>
 
 </beans>

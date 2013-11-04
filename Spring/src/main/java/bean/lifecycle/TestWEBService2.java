@@ -1,7 +1,7 @@
-package com.lufax.test;
+package bean.lifecycle;
 
-import static com.lufax.test.utils.MethodUtils.printConstract;
-import static com.lufax.test.utils.MethodUtils.printMethod;
+import static utility.MethodUtils.printConstract;
+import static utility.MethodUtils.printMethod;
 
 import javax.annotation.PostConstruct;
 

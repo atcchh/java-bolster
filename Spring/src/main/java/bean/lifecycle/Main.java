@@ -1,4 +1,4 @@
-package com.lufax.test;
+package bean.lifecycle;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -10,6 +10,6 @@ public class Main {
         System.out.println("********************************************");
         System.out.println("");
         System.out.println("");
-        ApplicationContext context = new FileSystemXmlApplicationContext(new String[]{"src/main/java/com/lufax/test/applicationContext.xml"}, true);
+        ApplicationContext context = new FileSystemXmlApplicationContext(new String[]{"classpath:**/lifecycle.xml"}, true);
     }
 }
