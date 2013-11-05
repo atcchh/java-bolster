@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.proxy demo</title>
+  <script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></script>
+</head>
+<body>
+ 
+  <p><button id="test" data-type="submit">Test</button></p>
+  <p id="log"></p>
+ 
+<script>
+$( "#test" ).one( "click", function(){
+	$.getJSON("http://list.lufax.com/list/service/news/sidebar-news?jsoncallback=?", function(data){
+		for(var i in data) {
+			$( "#log" ).append(data[i].title + "<br>");	
+		}	
+	})
+});
+
+$( "#test" ).click();
+$( "#test" ).click();
+
+
+</script>
+<br>
+<br>使用JQuery自带的函数jquery.one()，可以保证本次方法只能被调用一次
+<br>优点：简单
+<br>缺点：这个事件无法再次被触发
+<br>
+<br>改进:将自己完成后将自己remove掉然后在append经来
+ 
+</body>
+</html>

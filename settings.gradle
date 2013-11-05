@@ -1,1 +1,1 @@
-include "SqlUtility" ,"Spring"  , "LufaxAppCookBook", "RefactorExercise_1" , "LufaxWebCookBook" , "JQuery"
+include "SqlUtility" ,"Spring"  , "LufaxAppCookBook", "RefactorExercise_1" , "LufaxWebCookBook" , "JQuery" , "ZeroMQ"
