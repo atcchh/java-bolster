@@ -1,0 +1,5 @@
+dependencies {
+	
+	spring_version = "3.0.5.RELEASE"
+	compile([group: "org.springframework", name: "spring-asm", version: "$spring_version"])
+}
