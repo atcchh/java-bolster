@@ -108,4 +108,5 @@ task createProject() << {
 		return;
 	}
 	file("settings.gradle").text = (file("settings.gradle").text + " , \"" + projectName + "\"").replaceAll("\n","");
+        file(projectName + "/src/main/resources/log4j.properties").text = file(projectName + "/src/main/resources/log4j.properties").text + "\napp.name=" + projectName + "\n";
 }

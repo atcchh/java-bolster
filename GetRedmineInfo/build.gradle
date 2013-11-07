@@ -1,5 +1,10 @@
 dependencies {
 	
-	spring_version = "3.0.5.RELEASE"
-	compile([group: "org.springframework", name: "spring-asm", version: "$spring_version"])
+	spring_version = "3.2.4.RELEASE"
+	httpClient_version = "4.1.2"
+	common_io_version = "2.0.1"
+	compile([group: "org.springframework", name: "spring-web", version: "$spring_version"])
+	compile([group: "org.apache.httpcomponents", name: "httpclient", version: "$httpClient_version"])
+	compile([group: "commons-io", name: "commons-io", version: "$common_io_version"])
+	
 }

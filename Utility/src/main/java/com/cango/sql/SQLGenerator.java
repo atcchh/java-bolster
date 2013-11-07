@@ -1,4 +1,4 @@
-package org.lufax.sql.generator;
+package com.cango.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,8 +15,13 @@ import java.util.Map;
 
 import oracle.sql.TIMESTAMP;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SQLGenerator {
+    private static Logger LOG = LoggerFactory.getLogger(SQLGenerator.class);
     public static void main(String[] argu) throws Exception {
+        LOG.debug("start");
         String url = "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=172.17.40.56)(PORT=1521))(connect_data=(sid=ies)))";
         String driverClassName = "oracle.jdbc.driver.OracleDriver";
         String username = "p2popr";
