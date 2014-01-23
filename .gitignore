@@ -36,3 +36,8 @@ build/
 
 ### logs
 logs/
+
+*.iml
+*.ipr
+*.iws
+.idea/
