@@ -12,7 +12,7 @@ subprojects {
        mavenCentral()
     }
     ext  {
-	spring_version = "3.0.5.RELEASE"
+	spring_version = "3.2.9.RELEASE"
 	jersey_version = "1.8"
 	gson_version = "1.7.1"
 	log4j_version = "1.2.16"
@@ -30,7 +30,7 @@ subprojects {
     dependencies {
 
 	root = [
-		// spring config
+		// spring bean.config1
 		[group: "org.springframework", name: "spring-core", version: "$spring_version"],
 		[group: "org.springframework", name: "spring-expression", version: "$spring_version"],
 		[group: "org.springframework", name: "spring-beans", version: "$spring_version"],
