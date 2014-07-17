@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <bean name="beanSwappable" id="beanSwappable" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="targetSource" ref="beanSwap" />
+    </bean>
+
+    <bean name="beanSwap" id="beanSwap" class="org.springframework.aop.target.HotSwappableTargetSource">
+        <constructor-arg ref="customerService" />
+    </bean>
+
+
+
+</beans>

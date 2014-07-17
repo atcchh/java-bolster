@@ -1,7 +1,7 @@
 package bean.lifecycle;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] argu) {
@@ -10,6 +10,6 @@ public class Main {
         System.out.println("********************************************");
         System.out.println("");
         System.out.println("");
-        ApplicationContext context = new FileSystemXmlApplicationContext(new String[]{"classpath:**/lifecycle.xml"}, true);
+        ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"classpath:lifecycle.xml"}, true);
     }
 }
