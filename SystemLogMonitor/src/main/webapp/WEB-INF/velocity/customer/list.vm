@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+            </tr>
+        </thead>
+        #foreach($customer in $customers)
+        <tr>
+            <td>$customer.id</td>
+            <td>$customer.name</td>
+            <td>$customer.age</td>
+        </tr>
+        #end
+    </table>
+</body>
+</html>

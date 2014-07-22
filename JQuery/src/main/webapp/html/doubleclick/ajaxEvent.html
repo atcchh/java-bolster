@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>jQuery.proxy demo</title>
-  <script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></script>
-  <script type="text/javascript">
+  <db.script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></db.script>
+  <db.script type="text/javascript">
 	  $.ajaxSetup({
 	  	global:true,
 	  	beforeSend : function(XMLHttpRequest) {
@@ -14,14 +14,14 @@
 	  		return false;
 	  	}
 	  });
-  </script>
+  </db.script>
 </head>
 <body>
  
   <p><button id="test">Test</button></p>
   <p id="log"></p>
  
-<script>
+<db.script>
 $( "#test" ).on( "click", function(){
 	$.getJSON("http://list.lufax.com/list/service/news/sidebar-news?jsoncallback=?", function(data){
 		for(var i in data) {
@@ -33,7 +33,7 @@ $( "#test" ).on( "click", function(){
 $( "#test" ).click();
 $( "#test" ).click();
 
-</script>
+</db.script>
  
  
  <br>使用ajax的Global Ajax Event Handlers，每次将path放在一个cache中，如果cache中存在，就不能再次提交

@@ -38,6 +38,8 @@ public class MethodUtils {
         invokeIndex++;  
     }  
     public static void main(String[] args) {  
-        System.out.println(getInterface(TestWEBService1.class, "setBeanName",String.class));  
-    } 
+        System.out.println(getInterface(TestWEBService1.class, "setBeanName",String.class));
+        System.exit(-1);
+    }
+
 }

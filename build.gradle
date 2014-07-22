@@ -39,6 +39,7 @@ subprojects {
 		[group: "org.springframework", name: "spring-asm", version: "3.1.1.RELEASE"],
 		[group: "org.springframework", name: "spring-orm", version: "$spring_version"],
 		[group: "org.springframework", name: "spring-webmvc", version: "$spring_version"],
+        [group: "org.springframework", name: "spring-context-support", version: "$spring_version"],
 		
 		// gson
 		[group: "com.google.code.gson", name: "gson", version: "$gson_version"],

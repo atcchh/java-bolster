@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>jQuery.proxy demo</title>
-  <script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></script>
+  <db.script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></db.script>
 </head>
 <body>
  
   <p><button id="test">Test</button></p>
   <p id="log"></p>
  
-<script>
+<db.script>
 $( "#test" ).on( "click", function(){
 	$.getJSON("http://list.lufax.com/list/service/news/sidebar-news?jsoncallback=?", function(data){
 		for(var i in data) {
@@ -21,7 +21,7 @@ $( "#test" ).on( "click", function(){
 alert('I user the <br>$( "#test" ).click();<br>$( "#test" ).click();<br> to simulate double click');
 $( "#test" ).click();
 $( "#test" ).click();
-</script>
+</db.script>
  <br>使用jquery的proxy对象，将proxy的内容，
 </body>
 </html>

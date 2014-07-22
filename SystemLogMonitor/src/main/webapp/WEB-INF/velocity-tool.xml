@@ -1,0 +1,11 @@
+<tools>
+    <toolbox scope="request">
+        <tool class="org.apache.velocity.tools.view.ImportTool"/>
+    </toolbox>
+    <toolbox scope="request">
+        <tool class="org.apache.velocity.tools.generic.DateTool"/>
+    </toolbox>
+    <toolbox scope="request">
+        <tool class="org.apache.velocity.tools.view.LinkTool"/>
+    </toolbox>
+</tools>

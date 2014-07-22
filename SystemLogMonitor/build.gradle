@@ -1,0 +1,11 @@
+import com.sun.org.apache.regexp.internal.recompile
+
+apply plugin: 'jetty'
+
+dependencies {
+    compile "com.h2database:h2:1.4.179"
+    compile "org.apache.velocity:velocity:1.7"
+    compile "org.apache.velocity:velocity-tools:2.0"
+    compile 'org.springframework:spring-context-support:3.2.9.RELEASE'
+
+}

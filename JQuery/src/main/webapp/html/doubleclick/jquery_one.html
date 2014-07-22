@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>jQuery.proxy demo</title>
-  <script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></script>
+  <db.script src="/JQuery/js/jquery-2.0.3.js" type="text/javascript"></db.script>
 </head>
 <body>
  
   <p><button id="test" data-type="submit">Test</button></p>
   <p id="log"></p>
  
-<script>
+<db.script>
 $( "#test" ).one( "click", function(){
 	$.getJSON("http://list.lufax.com/list/service/news/sidebar-news?jsoncallback=?", function(data){
 		for(var i in data) {
@@ -23,7 +23,7 @@ $( "#test" ).click();
 $( "#test" ).click();
 
 
-</script>
+</db.script>
 <br>
 <br>使用JQuery自带的函数jquery.one()，可以保证本次方法只能被调用一次
 <br>优点：简单
