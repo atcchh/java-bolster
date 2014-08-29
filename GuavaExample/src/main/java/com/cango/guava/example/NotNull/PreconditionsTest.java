@@ -14,7 +14,7 @@ public class PreconditionsTest {
 
     @Test
     public void should_be_test() {
-        checkArgument(true);
+        checkArgument(true  );
     }
 }
 
