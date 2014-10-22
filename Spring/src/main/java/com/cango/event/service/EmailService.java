@@ -25,7 +25,9 @@ public class EmailService implements ApplicationEventPublisherAware {
     public void sendEmail(String address, String text) {
 
             BlackListEvent event = new BlackListEvent(this, address, text);
+        System.out.println(Thread.currentThread() + "start");
             publisher.publishEvent(event);
+            System.out.println(Thread.currentThread() + "end");
             return;
 
     }

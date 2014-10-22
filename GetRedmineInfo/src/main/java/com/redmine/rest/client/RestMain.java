@@ -10,7 +10,7 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import thirdparty.org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 
 import com.google.gson.Gson;
 import com.redmine.rest.client.dto.CommonTotal;
@@ -18,7 +18,7 @@ import com.redmine.rest.client.dto.Issue;
 import com.redmine.rest.client.dto.IssueTotal;
 
 public class RestMain {
-    private static int LIMIT = 100;
+    private static int LIMIT = 2;
     public static void main(String[] argu) throws IOException {
         List<Issue> issueList = new ArrayList<Issue>();
         RestTemplate template = BasicRestTemplateFactory.getBasicTemplate("caoyanfei079", "1234");
@@ -30,6 +30,7 @@ public class RestMain {
         // get total size
         CommonTotal total = new Gson().fromJson(response.getBody(), CommonTotal.class);
         Integer totalSize = total.getTotal_count();
+        totalSize = 5;
         for(int i = 0; i < totalSize / LIMIT + 1; i++) {
             parameter = new HashMap<String, String>();
             parameter.put("offset", (i* LIMIT) + "");
@@ -39,7 +40,7 @@ public class RestMain {
             IssueTotal issues = new Gson().fromJson(response.getBody(), IssueTotal.class);
             issueList.addAll(issues.getIssues());
         }
-        FileUtils.writeStringToFile(new File("/tmp/issues.txt"), new Gson().toJson(issueList));
+        FileUtils.writeStringToFile(new File("/tmp/issues.json"), new Gson().toJson(issueList));
         
     }
 }

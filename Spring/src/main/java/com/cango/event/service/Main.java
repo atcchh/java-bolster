@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(EmailService.class, BlackListNotifier.class);
         EmailService emailService = ctx.getBean(EmailService.class);
+        System.out.println(Thread.currentThread());
         emailService.sendEmail("caoyanfei079@pingan.com.cn","hello world");
     }
 }
