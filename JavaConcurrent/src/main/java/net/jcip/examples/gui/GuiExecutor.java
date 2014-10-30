@@ -25,7 +25,7 @@ public class GuiExecutor extends AbstractExecutorService {
     }
 
     public void execute(Runnable r) {
-        if (SwingUtilities.isEventDispatchThread())
+        if (net.jcip.examples.SwingUtilities.isEventDispatchThread())
             r.run();
         else
             SwingUtilities.invokeLater(r);
