@@ -11,7 +11,7 @@ import net.jcip.annotations.*;
  *
  * @author Brian Goetz and Tim Peierls
  */
-@ThreadSafe
+//@ThreadSafe
 public class ReentrantLockPseudoRandom extends PseudoRandom {
     private final Lock lock = new ReentrantLock(false);
     private int seed;

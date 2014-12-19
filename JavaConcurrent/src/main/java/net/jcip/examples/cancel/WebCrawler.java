@@ -1,6 +1,6 @@
 package net.jcip.examples.cancel;
 
-import net.jcip.annotations.*;
+
 import net.jcip.examples.TrackingExecutor;
 
 import java.net.URL;
@@ -23,7 +23,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
  */
 public abstract class WebCrawler {
     private volatile TrackingExecutor exec;
-    @GuardedBy("this") private final Set<URL> urlsToCrawl = new HashSet<URL>();
+    private final Set<URL> urlsToCrawl = new HashSet<URL>();
 
     private final ConcurrentMap<URL, Boolean> seen = new ConcurrentHashMap<URL, Boolean>();
     private static final long TIMEOUT = 500;

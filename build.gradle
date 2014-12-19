@@ -8,7 +8,7 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: "idea"
     repositories {
-        mavenRepo urls: ["http://172.19.17.8:8888/nexus/content/groups/public/"]
+        mavenCentral();
 
     }
     

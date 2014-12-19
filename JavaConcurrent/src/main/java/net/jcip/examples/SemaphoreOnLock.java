@@ -8,7 +8,7 @@ import net.jcip.annotations.*;
  * SemaphoreOnLock
  * <p/>
  * Counting semaphore implemented using Lock
- * (Not really how java.util.concurrent.Semaphore is implemented)
+ * (Not really how t.util.concurrent.Semaphore is implemented)
  *
  * @author Brian Goetz and Tim Peierls
  */
