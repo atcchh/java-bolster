@@ -1,13 +1,14 @@
 apply plugin: "idea"
 
 dependencies {
-	extLib = files('lib/ojdbc-6.0.jar')
+	extLib = files('lib/*.jar')
 }
 subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: "idea"
     repositories {
+//        mavenRepo urls: ["http://172.19.17.8:8888/nexus/content/groups/public/"]
         mavenCentral();
 
     }
