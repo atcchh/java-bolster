@@ -8,13 +8,13 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: "idea"
     repositories {
-//        mavenRepo urls: ["http://172.19.17.8:8888/nexus/content/groups/public/"]
+        mavenRepo urls: ["http://172.19.17.8:8888/nexus/content/groups/public/"]
         mavenCentral();
 
     }
     
     dependencies {
-        spring_version = "3.2.9.RELEASE"
+        spring_version = "3.2.13.RELEASE"
         jersey_version = "1.8"
         gson_version = "1.7.1"
         log4j_version = "1.2.16"

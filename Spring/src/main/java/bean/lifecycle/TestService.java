@@ -5,11 +5,7 @@ import static utility.MethodUtils.printMethod;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -20,9 +16,13 @@ import org.springframework.context.MessageSourceAware;
 import org.springframework.context.ResourceLoaderAware;
 import org.springframework.core.io.ResourceLoader;
 
-public class TestService implements BeanNameAware, BeanClassLoaderAware,BeanFactoryAware,ResourceLoaderAware,ApplicationEventPublisherAware,MessageSourceAware,ApplicationContextAware,BeanPostProcessor,InitializingBean{  
-    
-    public TestService(){  
+public class TestService implements BeanNameAware, BeanClassLoaderAware,BeanFactoryAware,ResourceLoaderAware,ApplicationEventPublisherAware,MessageSourceAware,ApplicationContextAware,BeanPostProcessor,InitializingBean,DisposableBean {
+    @Override
+    public void destroy() throws Exception {
+        printMethod(TestService.class,"destroy");
+    }
+
+    public TestService(){
         printConstract(TestService.class);  
     }  
     @PostConstruct  

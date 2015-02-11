@@ -12,6 +12,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.core.io.ResourceLoader;
 
 public class TestWEBService1 extends TestService {
+    public void destroy() throws Exception {
+        printMethod(TestWEBService1.class,"destroy");
+    }
     public TestWEBService1(){
         printConstract(TestWEBService1.class);
     }

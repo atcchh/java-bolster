@@ -1,6 +1,6 @@
 package com.cango.spring.crypto;
 
-import com.sun.crypto.provider.HmacCore;
+
 
 /**
  * Created by caoyanfei079 on 10/30/14.

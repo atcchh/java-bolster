@@ -13,6 +13,7 @@ import java.util.Map;
 public class PackageMetaFormat {
     private static Map<String, PackageMeta> packages = new HashMap<String, PackageMeta>();
     public static void add(ClassMeta classMeta) {
+        packages.
         if(!packages.containsKey(classMeta.getPackageName())) {
             PackageMeta packageMeta = new PackageMeta();
             packageMeta.setName(classMeta.getPackageName());

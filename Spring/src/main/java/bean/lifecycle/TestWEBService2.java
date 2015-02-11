@@ -23,6 +23,9 @@ import org.springframework.core.io.ResourceLoader;
 
 
 public class TestWEBService2 extends TestService implements BeanNameAware, BeanClassLoaderAware,BeanFactoryAware,ResourceLoaderAware,ApplicationEventPublisherAware,MessageSourceAware,ApplicationContextAware,BeanPostProcessor,InitializingBean{
+    public void destroy() throws Exception {
+        printMethod(TestWEBService2.class,"destroy");
+    }
     public TestWEBService2(){
         super();
         printConstract(TestWEBService2.class);
